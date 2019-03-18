@@ -1,0 +1,37 @@
+{
+  "name": "permanentinc/found",
+  "description": "SEO Tab - based on squarespace",
+  "homepage": "http://github.com/permanentinc/beautiful",
+  "keywords": [
+    "silverstripe",
+    "seo",
+    "admin",
+    "pinc",
+    "permanentinc",
+    "cms"
+  ],
+  "type": "silverstripe-module",
+  "license": "BSD-3-Clause",
+  "authors": [
+    {
+      "name": "Jaydn de Graaf",
+      "email": "jd@pinc.nz"
+    }
+  ],
+  "support": {
+    "issues": "http://github.com/permanentinc/found/issues"
+  },
+  "require": {
+    "silverstripe/cms": "^4",
+    "silverstripe/framework": "^4"
+  },
+  "extra": {
+    "installer-name": "found",
+    "expose": [
+      "dist"
+    ],
+    "screenshots": [
+      "http://permanentinc.me/screenshot2.png"
+    ]
+  }
+}

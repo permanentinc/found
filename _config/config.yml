@@ -1,0 +1,6 @@
+---
+Name: permanentinc-found
+---
+SilverStripe\Admin\LeftAndMain:
+  extensions:
+    - permanentinc\found\Extensions\LeftAndMainExtension
