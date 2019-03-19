@@ -10,7 +10,7 @@
     "permanentinc",
     "cms"
   ],
-  "type": "silverstripe-module",
+  "type": "silverstripe-vendormodule",
   "license": "BSD-3-Clause",
   "authors": [
     {
