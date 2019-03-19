@@ -1,38 +1,51 @@
+//------------------------------------------------------------------
+// Found Preview
+//------------------------------------------------------------------
+
 .foundPreview {
   background: white;
   padding: 11px;
   border: 1px solid #e0e5eb;
   margin-bottom: 30px;
   border-radius: 3px;
-  position: relative; }
-  .foundPreview:after {
+  position: relative;
+
+  &:after {
     position: absolute;
     content: "";
     left: 0;
     right: 0;
     bottom: -20px;
-    border-bottom: 1px solid #f0f2f5; }
-  .foundPreview__title {
+    border-bottom: 1px solid #f0f2f5;
+  }
+
+  &__title {
     display: block;
     color: #1a0dab;
     font-size: 16px;
     line-height: 1.2;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis; }
-  .foundPreview__url {
+    text-overflow: ellipsis;
+  }
+
+  &__url {
     display: block;
     color: #006621;
     font-size: 14px;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis; }
-  .foundPreview__description {
+    text-overflow: ellipsis;
+  }
+
+  &__description {
     display: block;
     line-height: 1.4;
     word-wrap: break-word;
     color: #545454;
-    font-size: small; }
+    font-size: small;
+  }
+}
 
 .js-found-title-character-limit {
   position: absolute;
@@ -41,13 +54,16 @@
   z-index: 3;
   font-size: 12px;
   bottom: 8px;
-  opacity: .6; }
+  opacity: .6;
+
   @media (max-width: 992px) {
-    .js-found-title-character-limit {
-      right: 10px; } }
+    right: 10px;
+  }
+}
 
 .form__field-holder {
-  position: relative; }
+  position: relative;
+}
 
 .js-found-description-character-limit {
   position: absolute;
@@ -56,14 +72,14 @@
   font-size: 12px;
   bottom: 8px;
   right: 30px;
-  opacity: .6; }
+  opacity: .6;
+
   @media (max-width: 992px) {
-    .js-found-description-character-limit {
-      right: 10px; } }
+    right: 10px;
+  }
+}
 
 .foundIntroduction {
   opacity: 0.5;
-  font-size: 12px; }
-
-
-/*# sourceMappingURL=../found/bundle.map.js*/
+  font-size: 12px;
+}

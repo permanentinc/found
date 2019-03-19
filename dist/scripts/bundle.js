@@ -111,12 +111,40 @@ Stylesheets
 
 
 /*------------------------------------------------------------------
-Imports
+Variables
 ------------------------------------------------------------------*/
 
+var $body = jquery__WEBPACK_IMPORTED_MODULE_0___default()('body');
 /*------------------------------------------------------------------
 Post load classlist
 ------------------------------------------------------------------*/
+
+var updateFoundTitle = function updateFoundTitle(value) {
+  if (!value) return;
+  var $foundTitle = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-found-preview-title');
+  var text = "".concat(value).concat($foundTitle.attr('data-append'));
+  $foundTitle.text(text);
+};
+
+var updateFoundDescription = function updateFoundDescription(value) {
+  if (!value) return;
+  var $foundDescription = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-found-preview-description');
+  var text = "".concat(value).concat($foundDescription.attr('data-append'));
+  $foundDescription.text(text);
+};
+
+(function ($) {
+  $(document).ready(function () {
+    $('<div class="[ js-found-title-character-limit ]" data-limit="100">100</div>').insertAfter($('input.js-found-title'));
+    $body.on('keyup', 'input.js-found-title', function () {
+      updateFoundTitle($(this).val());
+    });
+    $('<div class="[ js-found-description-character-limit ]" data-limit="400">400</div>').insertAfter($('textarea.js-found-description'));
+    $body.on('keyup', 'textarea.js-found-description', function () {
+      updateFoundDescription($(this).val());
+    });
+  });
+})(jQuery);
 
 /***/ }),
 
