@@ -120,26 +120,42 @@ Post load classlist
 ------------------------------------------------------------------*/
 
 var updateFoundTitle = function updateFoundTitle(value) {
-  if (!value) return;
   var $foundTitle = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-found-preview-title');
-  var text = "".concat(value).concat($foundTitle.attr('data-append'));
-  $foundTitle.text(text);
+
+  if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-found-title-character-limit').length < 1) {
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()('<div class="[ js-found-title-character-limit ]" data-limit="100">100</div>').insertAfter(jquery__WEBPACK_IMPORTED_MODULE_0___default()('input.js-found-title'));
+  }
+
+  if (!value) {
+    $foundTitle.text("".concat($foundTitle.attr('data-nominal')));
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-found-title-character-limit').text('100');
+  } else {
+    $foundTitle.text("".concat(value).concat($foundTitle.attr('data-append')));
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-found-title-character-limit').text(100 - value.length);
+  }
 };
 
 var updateFoundDescription = function updateFoundDescription(value) {
-  if (!value) return;
   var $foundDescription = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-found-preview-description');
-  var text = "".concat(value).concat($foundDescription.attr('data-append'));
-  $foundDescription.text(text);
+
+  if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-found-description-character-limit').length < 1) {
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()('<div class="[ js-found-description-character-limit ]" data-limit="400">400</div>').insertAfter(jquery__WEBPACK_IMPORTED_MODULE_0___default()('textarea.js-found-description'));
+  }
+
+  if (!value) {
+    $foundDescription.text("".concat($foundDescription.attr('data-nominal')));
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-found-title-character-limit').text('400');
+  } else {
+    $foundDescription.text("".concat(value).concat($foundDescription.attr('data-append')));
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-found-description-character-limit').text(100 - value.length);
+  }
 };
 
 (function ($) {
   $(document).ready(function () {
-    $('<div class="[ js-found-title-character-limit ]" data-limit="100">100</div>').insertAfter($('input.js-found-title'));
     $body.on('keyup', 'input.js-found-title', function () {
       updateFoundTitle($(this).val());
     });
-    $('<div class="[ js-found-description-character-limit ]" data-limit="400">400</div>').insertAfter($('textarea.js-found-description'));
     $body.on('keyup', 'textarea.js-found-description', function () {
       updateFoundDescription($(this).val());
     });

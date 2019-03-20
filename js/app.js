@@ -23,29 +23,43 @@ Post load classlist
 ------------------------------------------------------------------*/
 
 const updateFoundTitle = (value) => {
-    if (!value) return;
     let $foundTitle = $('.js-found-preview-title');
-    let text = `${value}${$foundTitle.attr('data-append')}`;
-    $foundTitle.text(text);
+    if ($('.js-found-title-character-limit').length < 1) {
+        $('<div class="[ js-found-title-character-limit ]" data-limit="100">100</div>').insertAfter($('input.js-found-title'));
+    }
+    if (!value) {
+        $foundTitle.text(`${$foundTitle.attr('data-nominal')}`);
+        $('.js-found-title-character-limit').text('100');
+    } else {
+        $foundTitle.text(`${value}${$foundTitle.attr('data-append')}`);
+        $('.js-found-title-character-limit').text(100 - value.length);
+    }
 };
 
 const updateFoundDescription = (value) => {
-    if (!value) return;
     let $foundDescription = $('.js-found-preview-description');
-    let text = `${value}${$foundDescription.attr('data-append')}`;
-    $foundDescription.text(text);
+    if ($('.js-found-description-character-limit').length < 1) {
+        $('<div class="[ js-found-description-character-limit ]" data-limit="400">400</div>').insertAfter($('textarea.js-found-description'));
+    }
+    if (!value) {
+        $foundDescription.text(`${$foundDescription.attr('data-nominal')}`);
+        $('.js-found-title-character-limit').text('400');
+    } else {
+        $foundDescription.text(`${value}${$foundDescription.attr('data-append')}`);
+        $('.js-found-description-character-limit').text(100 - value.length);
+    }
 };
 
 (function ($) {
     $(document).ready(function () {
 
-        $('<div class="[ js-found-title-character-limit ]" data-limit="100">100</div>').insertAfter($('input.js-found-title'))
+
 
         $body.on('keyup', 'input.js-found-title', function () {
             updateFoundTitle($(this).val());
         });
 
-        $('<div class="[ js-found-description-character-limit ]" data-limit="400">400</div>').insertAfter($('textarea.js-found-description'))
+
 
         $body.on('keyup', 'textarea.js-found-description', function () {
             updateFoundDescription($(this).val());

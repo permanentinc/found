@@ -3,9 +3,9 @@ Name: permanentinc-found
 ---
 SilverStripe\Admin\LeftAndMain:
   extra_requirements_css:
-    - found\dist\styles\main.css
+    - permanentinc/found:dist\styles\main.css
   extra_requirements_javascript:
-    - found\dist\scripts\bundle.js
+    - permanentinc/found:dist\scripts\bundle.js
 SilverStripe\CMS\Model\SiteTree:
   extensions:
     - permanentinc\found\Extensions\FoundExtension
