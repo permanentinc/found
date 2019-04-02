@@ -144,20 +144,30 @@ var updateFoundDescription = function updateFoundDescription(value) {
 
   if (!value) {
     $foundDescription.text("".concat($foundDescription.attr('data-nominal')));
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-found-title-character-limit').text('400');
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-found-description-character-limit').text('400');
   } else {
-    $foundDescription.text("".concat(value).concat($foundDescription.attr('data-append')));
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-found-description-character-limit').text(100 - value.length);
+    $foundDescription.text(value);
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-found-description-character-limit').text(400 - value.length);
   }
 };
 
 (function ($) {
-  $(document).ready(function () {
-    $body.on('keyup', 'input.js-found-title', function () {
-      updateFoundTitle($(this).val());
+  $.entwine(function ($) {
+    $('.js-found-description').entwine({
+      onmatch: function onmatch() {
+        updateFoundDescription();
+        $body.on('keyup', 'textarea.js-found-description', function () {
+          updateFoundDescription($(this).val());
+        });
+      }
     });
-    $body.on('keyup', 'textarea.js-found-description', function () {
-      updateFoundDescription($(this).val());
+    $('.js-found-title').entwine({
+      onmatch: function onmatch() {
+        updateFoundTitle();
+        $body.on('keyup', 'input.js-found-title', function () {
+          updateFoundTitle($(this).val());
+        });
+      }
     });
   });
 })(jQuery);

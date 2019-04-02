@@ -43,26 +43,34 @@ const updateFoundDescription = (value) => {
     }
     if (!value) {
         $foundDescription.text(`${$foundDescription.attr('data-nominal')}`);
-        $('.js-found-title-character-limit').text('400');
+        $('.js-found-description-character-limit').text('400');
     } else {
-        $foundDescription.text(`${value}${$foundDescription.attr('data-append')}`);
-        $('.js-found-description-character-limit').text(100 - value.length);
+        $foundDescription.text(value);
+        $('.js-found-description-character-limit').text(400 - value.length);
     }
 };
 
 (function ($) {
-    $(document).ready(function () {
+    $.entwine(function ($) {
 
+        $('.js-found-description').entwine({
+            onmatch: function () {
 
-
-        $body.on('keyup', 'input.js-found-title', function () {
-            updateFoundTitle($(this).val());
+                updateFoundDescription();
+                $body.on('keyup', 'textarea.js-found-description', function () {
+                    updateFoundDescription($(this).val());
+                });
+            }
         });
 
+        $('.js-found-title').entwine({
+            onmatch: function () {
+                updateFoundTitle();
+                $body.on('keyup', 'input.js-found-title', function () {
+                    updateFoundTitle($(this).val());
+                });
 
-
-        $body.on('keyup', 'textarea.js-found-description', function () {
-            updateFoundDescription($(this).val());
+            }
         });
     });
 })(jQuery);
