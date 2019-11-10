@@ -169,6 +169,13 @@ var updateFoundDescription = function updateFoundDescription(value) {
         });
       }
     });
+    $('#Form_EditForm_FoundImage').entwine({
+      onChange: function onChange(a, b, c) {
+        console.log(a);
+        console.log(b);
+        console.log(c);
+      }
+    });
   });
 })(jQuery);
 
