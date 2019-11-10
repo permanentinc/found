@@ -1,4 +1,4 @@
-console.log('%cFOUND 0.1', 'padding:5px;color: #fff; background: #377cff;');
+console.log('%cFOUND 0.2', 'padding:5px;color: #fff; background: #c3e88d;');
 
 /*------------------------------------------------------------------
 Dependencies

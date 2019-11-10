@@ -103,7 +103,7 @@
       color: #606770;
       font-size: 12px;
       text-transform: uppercase;
-    }
+    } 
 
     &__title {
       color: #000;
@@ -121,7 +121,7 @@
       overflow: hidden;
       margin-top: 3px;
       text-overflow: ellipsis;
-      white-space: normal;
+      white-space: pre;
     }
   }
 }
