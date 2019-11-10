@@ -54,11 +54,12 @@ class FoundExtension extends DataExtension
             'Root.SEO',
             [
                 LiteralField::create('FoundIntroduction', '<p class="foundIntroduction">Search engine optimization (SEO) allows you to improve your ranking in search results. Use these features to make it easier for users to find your page when they search for it.</p>'),
-                LiteralField::create('FoundExample', '<p>Search Results Preview</p>
+                LiteralField::create('FoundExample', '
+                <p>Search Results Preview</p>
                 <div class="foundPreview">
-                <span class="foundPreview__title [ js-found-preview-title ]" data-nominal="Page Title - ' . $nominalTitle . '" data-append=" - ' . $nominalTitle . '">Page Title - ' . $nominalTitle . '</span>
-                <span class="foundPreview__url [ js-found-preview-url ]">' . $this->owner->AbsoluteLink() . '</span>
-                <span class="foundPreview__description [ js-found-preview-description ]" data-nominal="' . $nominalDescription . '">' . $nominalDescription . '</span>
+                    <span class="foundPreview__title [ js-found-preview-title ]" data-nominal="Page Title - ' . $nominalTitle . '" data-append=" - ' . $nominalTitle . '">Page Title - ' . $nominalTitle . '</span>
+                    <span class="foundPreview__url [ js-found-preview-url ]">' . $this->owner->AbsoluteLink() . '</span>
+                    <span class="foundPreview__description [ js-found-preview-description ]" data-nominal="' . $nominalDescription . '">' . $nominalDescription . '</span>
                 </div>'),
                 TextField::create('FoundTitle', 'SEO Title (Optional)')->addExtraClass('[ js-found-title ]'),
                 TextAreaField::create('FoundDescription', 'SEO Title (Optional)')->addExtraClass('[ js-found-description ]'),
@@ -66,8 +67,9 @@ class FoundExtension extends DataExtension
                 CheckboxField::create('FoundHide', 'Hide this page from search engine results'),
                 LiteralField::create('FoundImage_Description', '<p class="foundIntroduction">Social networks typically show your social sharing image together with your SEO title and description. If you don’t add a social sharing image, we’ll use your social sharing logo or site logo instead. <a href="https://developers.facebook.com/tools/debug/sharing/?q=' . $this->owner->AbsoluteLink() . '" targe="_blank">Facebook (fetch latest preview)</a></p>'),
                 UploadField::create('FoundImage', 'Alternate Social Sharing Image (Optional)'),
-                LiteralField::create('FoundImagePreview', '<div class="foundSocialPreview">
-                    <div class="foundSocialPreview__image" style="background-image:url(' . $image . ')"></div>
+                LiteralField::create('FoundImagePreview', '
+                <div class="foundSocialPreview">
+                    <div class="foundSocialPreview__image [ js-found-preview-image ]" style="background-image:url(' . $image . ')"></div>
                     <div class="foundSocialPreview__copy">
                         <div class="foundSocialPreview__copy__url">' . $URL . '</div>
                         <div class="foundSocialPreview__copy__title [ js-found-preview-title ]" data-nominal="Page Title - ' . $nominalTitle . '" data-append=" - ' . $nominalTitle . '">Page Title - ' . $nominalTitle . '</div>
