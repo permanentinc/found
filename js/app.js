@@ -1,4 +1,4 @@
-console.log('%cFOUND 0.1', 'padding:5px;color: #fff; background: #377cff;');
+console.log('%cFOUND 0.2', 'padding:5px;color: #fff; background: #c3e88d;');
 
 /*------------------------------------------------------------------
 Dependencies
@@ -55,7 +55,6 @@ const updateFoundDescription = (value) => {
 
         $('.js-found-description').entwine({
             onmatch: function () {
-
                 updateFoundDescription();
                 $body.on('keyup', 'textarea.js-found-description', function () {
                     updateFoundDescription($(this).val());
@@ -69,6 +68,16 @@ const updateFoundDescription = (value) => {
                 $body.on('keyup', 'input.js-found-title', function () {
                     updateFoundTitle($(this).val());
                 });
+
+            }
+        });
+
+        $('#Form_EditForm_FoundImage').entwine({
+            onChange: function (a, b, c) {
+                console.log(a);
+                console.log(b);
+                console.log(c);
+
 
             }
         });

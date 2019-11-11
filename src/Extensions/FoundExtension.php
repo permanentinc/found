@@ -69,8 +69,10 @@ class FoundExtension extends DataExtension
                 CheckboxField::create('FoundHide', 'Hide this page from search engine results'),
                 LiteralField::create('FoundImage_Description', '<p class="foundIntroduction">Social networks typically show your social sharing image together with your SEO title and description. If you don’t add a social sharing image, we’ll use your social sharing logo or site logo instead. <a href="https://developers.facebook.com/tools/debug/sharing/?q=' . $this->owner->AbsoluteLink() . '" target="_blank">Facebook (fetch latest preview)</a></p>'),
                 UploadField::create('FoundImage', 'Alternate Social Sharing Image (Optional)'),
-                LiteralField::create('FoundImagePreview', '<div class="foundSocialPreview">
-                    <div class="foundSocialPreview__image"><img src="' . $image . '" style="height:261px"></div>
+                LiteralField::create('FoundImagePreview', '
+                <p>Facebook Share Preview</p>
+                <div class="foundSocialPreview">
+                    <div class="foundSocialPreview__image [ js-found-preview-image ]" style="background-image:url(' . $image . ')"></div>
                     <div class="foundSocialPreview__copy">
                         <div class="foundSocialPreview__copy__url">' . $URL . '</div>
                         <div class="foundSocialPreview__copy__title [ js-found-preview-title ]" data-nominal="' . $pageTitle . ' - ' . $nominalTitle . '" data-append=" - ' . $nominalTitle . '">' . $pageTitle . ' - ' . $nominalTitle . '</div>
