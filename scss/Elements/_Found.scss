@@ -96,15 +96,25 @@
     background-size: cover;
     position: relative;
 
-    &:after {
+    p {
       position: absolute;
-      content: 'Upload and image above or add a global default in your site settings';
       text-align: center;
       font-size: 1.2rem !important;
       opacity: 0.4;
       left: 50%;
       top: 50%;
       transform: translateX(-50%) translateY(-50%);
+      z-index: 2;
+    }
+
+    &__background {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-size: cover;
+      z-index: 3;
     }
   }
 

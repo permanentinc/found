@@ -20,10 +20,10 @@ class FoundExtension extends DataExtension
 {
 
     private static $db = [
-        'FoundTitle' => 'Varchar(255)',
+        'FoundTitle'       => 'Varchar(255)',
         'FoundDescription' => 'Text',
         'FoundTwitterUser' => 'Varchar(255)',
-        'FoundHide' => 'Boolean'
+        'FoundHide'        => 'Boolean'
     ];
 
     private static $has_one = [
@@ -33,7 +33,6 @@ class FoundExtension extends DataExtension
     private static $owns = [
         'FoundImage'
     ];
-
 
     public function updateCMSFields(FieldList $fields)
     {
@@ -49,7 +48,7 @@ class FoundExtension extends DataExtension
 
         $URL = preg_replace('#^https?://#', '', $this->owner->AbsoluteLink());
         $URL = rtrim($URL, '/');
-        $image = $this->owner->FoundImage()->exists() ? $this->owner->FoundImage()->Fill(1200,628)->URL : 'https://placehold.it/1000x522/333?text=Add+an+image+above+and+save+to+preview';
+        $image = $this->owner->FoundImage()->exists() ? $this->owner->FoundImage()->Fill(1200,628)->URL : '';
 
         $fields->addFieldsToTab(
             'Root.SEO',
@@ -64,21 +63,26 @@ class FoundExtension extends DataExtension
                 ),
                 TextField::create('FoundTitle', 'SEO Title (Optional)')->addExtraClass('[ js-found-title ]'),
                 TextareaField::create('FoundDescription', 'SEO Description (Optional)')->addExtraClass('[ js-found-description ]'),
-                TextField::create('FoundTwitterUser', 'Twitter Username (Optional)')->setAttribute('placeholder', 'eg. @username'),
                 LiteralField::create('FoundIntroduction', '<p>Search results typically show your SEO title and description. Your title is also the browser window title, and matches your title formats. Depending on the search engine, descriptions displayed can be 50 to 300 characters long. If you don’t add a title or description, search engines will use your page title and content.</p>'),
-                CheckboxField::create('FoundHide', 'Hide this page from search engine results'),
                 LiteralField::create('FoundImage_Description', '<p class="foundIntroduction">Social networks typically show your social sharing image together with your SEO title and description. If you don’t add a social sharing image, we’ll use your social sharing logo or site logo instead. <a href="https://developers.facebook.com/tools/debug/sharing/?q=' . $this->owner->AbsoluteLink() . '" target="_blank">Facebook (fetch latest preview)</a></p>'),
                 UploadField::create('FoundImage', 'Alternate Social Sharing Image (Optional)'),
                 LiteralField::create('FoundImagePreview', '
                 <p>Facebook Share Preview</p>
                 <div class="foundSocialPreview">
-                    <div class="foundSocialPreview__image [ js-found-preview-image ]" style="background-image:url(' . $image . ')"></div>
+                    <div class="foundSocialPreview__image">
+                        <p>Add an image and save to preview</p>
+                        <div class="foundSocialPreview__image__background [ js-found-preview-image ]" style="background-image:url(' . $image . ')"></div>
+                    </div>
                     <div class="foundSocialPreview__copy">
                         <div class="foundSocialPreview__copy__url">' . $URL . '</div>
                         <div class="foundSocialPreview__copy__title [ js-found-preview-title ]" data-nominal="' . $pageTitle . ' - ' . $nominalTitle . '" data-append=" - ' . $nominalTitle . '">' . $pageTitle . ' - ' . $nominalTitle . '</div>
                         <div class="foundSocialPreview__copy__description [ js-found-preview-description ]" data-nominal="' . $nominalDescription . '">' . $nominalDescription . '</div>
                     </div>
                 </div>'),
+                LiteralField::create('Found_Spacer', '<p>&nbsp;</p>'),
+
+                CheckboxField::create('FoundHide', 'Hide this page from search engine results'),
+                // TextField::create('FoundTwitterUser', 'Twitter Username (Optional)')->setAttribute('placeholder', 'eg. @username'),
             ]
         );
     }
