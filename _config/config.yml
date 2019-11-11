@@ -6,6 +6,11 @@ SilverStripe\Admin\LeftAndMain:
     - permanentinc/found:dist\styles\main.css
   extra_requirements_javascript:
     - permanentinc/found:dist\scripts\bundle.js
+
 SilverStripe\CMS\Model\SiteTree:
   extensions:
     - permanentinc\found\Extensions\FoundExtension
+
+SilverStripe\SiteConfig\SiteConfig:
+  extensions:
+    - permanentinc\found\Extensions\FoundConfigExtension
