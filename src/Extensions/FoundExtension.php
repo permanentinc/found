@@ -47,6 +47,7 @@ class FoundExtension extends DataExtension
         $URL = preg_replace('#^https?://#', '', $this->owner->AbsoluteLink());
         $URL = rtrim($URL, '/');
         $image = '';
+        
         /**
          * Add all of the relevent emelents and fields to the SEO tab
          */
@@ -70,9 +71,7 @@ class FoundExtension extends DataExtension
                 LiteralField::create('FoundImagePreview', '
                 <p>Facebook Share Preview</p>
                 <div class="foundSocialPreview">
-                    <div class="foundSocialPreview__image [ js-found-preview-image ]" style="background-image:url(' . $image . ')">
-                    
-                    </div>
+                    <div class="foundSocialPreview__image [ js-found-preview-image ]" style="background-image:url(' . $image . ')"></div>
                     <div class="foundSocialPreview__copy">
                         <div class="foundSocialPreview__copy__url">' . $URL . '</div>
                         <div class="foundSocialPreview__copy__title [ js-found-preview-title ]" data-nominal="Page Title - ' . $nominalTitle . '" data-append=" - ' . $nominalTitle . '">Page Title - ' . $nominalTitle . '</div>

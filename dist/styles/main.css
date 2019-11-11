@@ -77,7 +77,7 @@
     position: relative; }
     .foundSocialPreview__image:after {
       position: absolute;
-      content: 'Upload and image above or add global default in your site settings';
+      content: 'Upload and image above or add a global default in your site settings';
       text-align: center;
       font-size: 1.2rem !important;
       opacity: 0.4;
