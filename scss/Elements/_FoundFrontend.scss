@@ -1,0 +1,259 @@
+//------------------------------------------------------------------
+// Found Preview
+//------------------------------------------------------------------
+
+$primary: var(--primary-colour);
+
+.foundOpen {
+  #found {
+    transform: translateX(0);
+    z-index: 999999999;
+  }
+}
+
+#found {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  transform: translateX(-100%);
+  transition: all 333ms ease;
+  z-index: 99999999;
+  width: 320px;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  .js-toggle-found {
+    position: absolute;
+    bottom: 0;
+    left: 100%;
+    width: 30px;
+    bottom: 31px;
+    height: 30px;
+    background-color: #c792ea;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+      width: 20px;
+      height: auto;
+
+      path {
+        fill: white;
+      }
+    }
+  }
+
+  .found {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 320px;
+    top: 0;
+    z-index: 999;
+    background: #fff;
+    box-shadow: 0 0.125rem 9.375rem rgba(90, 97, 105, 0.1), 0 0.25rem 0.5rem rgba(90, 97, 105, 0.12), 0 0.9375rem 1.375rem rgba(90, 97, 105, 0.1), 0 0.4375rem 2.1875rem rgba(165, 182, 201, 0.1);
+
+    * {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+      font-weight: normal !important;
+    }
+
+    &__scroll {
+      display: flex;
+      align-content: flex-start;
+      flex-wrap: wrap;
+      position: fixed;
+      top: 40px;
+      bottom: 0;
+
+      &::-webkit-scrollbar-track {
+        background-color: #ebebeb;
+      }
+
+      &::-webkit-scrollbar {
+        width: 3px;
+        background-color: #ebebeb;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: #c792ea;
+      }
+    }
+
+    &__header {
+      padding: 15px 10px;
+
+      svg {
+        width: 20px;
+        height: auto;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 5px;
+
+        path {
+          fill: #333;
+        }
+      }
+
+      h5 {
+        color: #333;
+        margin: 0;
+        display: inline-block;
+        font-size: 17px;
+        vertical-align: middle;
+      }
+    }
+
+    &__button {
+      border: 0;
+      font-weight: bold !important;
+      color: white;
+      border-radius: 0;
+      background: #c792ea;
+      float: right;
+      margin: 20px 5px;
+      padding: 10px 30px;
+      transform-origin: bottom left;
+      outline: 0;
+      cursor: pointer;
+      margin-right: 10px;
+      margin-left: auto;
+      user-select: none;
+      position: relative;
+      transition: all 222ms ease;
+
+      &:before {
+        position: absolute;
+        content: '';
+        transform: scaleY(0);
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background-color: rgba(#fff, 0.1);
+        transform-origin: top left;
+        z-index: 1;
+        transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) 0s;
+      }
+
+      &:hover:before {
+        transform: scaleY(1);
+        transform-origin: bottom left;
+      }
+    }
+  }
+}
+
+/*
+Page loader
+ */
+$dot-size2: 6px;
+
+.type__button__loader {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 40%;
+  width: 100%;
+  transform: translateY(-80%);
+  text-align: center;
+  margin-top: -5px auto 0;
+  opacity: 0;
+  transition: all 222ms ease;
+
+  &__dot {
+    display: inline-block;
+    width: $dot-size2;
+    height: $dot-size2;
+    background-color: white;
+    border: 0;
+    border-radius: 1000px;
+    margin: 0 1px;
+    animation-name: wave2;
+    animation-duration: 0.5s;
+    animation-timing-function: cubic-bezier(0.64, 0.12, 0.79, 0.35);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+
+    &:nth-child(2) {
+      animation-delay: 0.3s;
+    }
+
+    &:nth-child(3) {
+      animation-delay: 0.6s;
+    }
+  }
+
+  &__shadows {
+    position: absolute;
+    display: block;
+    width: 100%;
+    animation-name: opa;
+    animation-duration: 0.6s;
+    animation-iteration-count: 1;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 13px;
+
+    &__shadow {
+      display: inline-block;
+      text-align: center;
+      margin: 0 1px;
+      border-radius: 50%;
+      opacity: 0.5;
+      width: $dot-size2;
+      height: 5px;
+      background-color: rgba(black, 0.12);
+      animation-name: strech;
+      animation-duration: 0.5s;
+      animation-timing-function: cubic-bezier(0.64, 0.12, 0.79, 0.35);
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+
+      &:nth-child(2) {
+        animation-delay: 0.3s;
+      }
+
+      &:nth-child(3) {
+        animation-delay: 0.6s;
+      }
+    }
+  }
+}
+
+@keyframes strech {
+  0% {
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes wave2 {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY($dot-size2 * 1.5);
+  }
+}
+
+.foundBusy {
+  .found__button__loader {
+    opacity: 1;
+  }
+
+  .found__button {
+    color: #c792ea !important;
+  }
+}

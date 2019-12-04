@@ -119,65 +119,32 @@ var $body = jquery__WEBPACK_IMPORTED_MODULE_0___default()('body');
 Post load classlist
 ------------------------------------------------------------------*/
 
-var updateFoundTitle = function updateFoundTitle(value) {
-  var $foundTitle = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-found-preview-title');
-
-  if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-found-title-character-limit').length < 1) {
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()('<div class="[ js-found-title-character-limit ]" data-limit="100">100</div>').insertAfter(jquery__WEBPACK_IMPORTED_MODULE_0___default()('input.js-found-title'));
-  }
-
-  if (!value) {
-    $foundTitle.text("".concat($foundTitle.attr('data-nominal')));
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-found-title-character-limit').text('100');
-  } else {
-    $foundTitle.text("".concat(value).concat($foundTitle.attr('data-append')));
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-found-title-character-limit').text(100 - value.length);
-  }
+var toggleTypeSidebar = function toggleTypeSidebar() {
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').toggleClass('foundOpen');
 };
 
-var updateFoundDescription = function updateFoundDescription(value) {
-  var $foundDescription = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-found-preview-description');
+jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-toggle-found').on('click', function (e) {
+  e.preventDefault();
+  toggleTypeSidebar();
+});
 
-  if (jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-found-description-character-limit').length < 1) {
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()('<div class="[ js-found-description-character-limit ]" data-limit="400">400</div>').insertAfter(jquery__WEBPACK_IMPORTED_MODULE_0___default()('textarea.js-found-description'));
-  }
-
-  if (!value) {
-    $foundDescription.text("".concat($foundDescription.attr('data-nominal')));
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-found-description-character-limit').text('400');
-  } else {
-    $foundDescription.text(value);
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-found-description-character-limit').text(400 - value.length);
-  }
-};
-
-(function ($) {
-  $.entwine(function ($) {
-    $('.js-found-description').entwine({
-      onmatch: function onmatch() {
-        updateFoundDescription();
-        $body.on('keyup', 'textarea.js-found-description', function () {
-          updateFoundDescription($(this).val());
-        });
-      }
-    });
-    $('.js-found-title').entwine({
-      onmatch: function onmatch() {
-        updateFoundTitle();
-        $body.on('keyup', 'input.js-found-title', function () {
-          updateFoundTitle($(this).val());
-        });
-      }
-    });
-    $('#Form_EditForm_FoundImage').entwine({
-      onChange: function onChange(a, b, c) {
-        console.log(a);
-        console.log(b);
-        console.log(c);
-      }
-    });
+var saveFound = function saveFound() {
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').addClass('foundBusy');
+  jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
+    url: jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-save-type-settings').attr('data-api'),
+    type: 'POST',
+    data: {}
+  }).done(function (response) {
+    setTimeout(function () {
+      return jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').removeClass('foundBusy');
+    }, 400);
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).trigger('resize');
   });
-})(jQuery);
+};
+
+jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-save-type-settings').on('click', function () {
+  saveFound();
+});
 
 /***/ }),
 

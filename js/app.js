@@ -22,64 +22,29 @@ let $body = $('body');
 Post load classlist
 ------------------------------------------------------------------*/
 
-const updateFoundTitle = (value) => {
-    let $foundTitle = $('.js-found-preview-title');
-    if ($('.js-found-title-character-limit').length < 1) {
-        $('<div class="[ js-found-title-character-limit ]" data-limit="100">100</div>').insertAfter($('input.js-found-title'));
-    }
-    if (!value) {
-        $foundTitle.text(`${$foundTitle.attr('data-nominal')}`);
-        $('.js-found-title-character-limit').text('100');
-    } else {
-        $foundTitle.text(`${value}${$foundTitle.attr('data-append')}`);
-        $('.js-found-title-character-limit').text(100 - value.length);
-    }
+const toggleTypeSidebar = () => {
+    $('body').toggleClass('foundOpen');
 };
 
-const updateFoundDescription = (value) => {
-    let $foundDescription = $('.js-found-preview-description');
-    if ($('.js-found-description-character-limit').length < 1) {
-        $('<div class="[ js-found-description-character-limit ]" data-limit="400">400</div>').insertAfter($('textarea.js-found-description'));
-    }
-    if (!value) {
-        $foundDescription.text(`${$foundDescription.attr('data-nominal')}`);
-        $('.js-found-description-character-limit').text('400');
-    } else {
-        $foundDescription.text(value);
-        $('.js-found-description-character-limit').text(400 - value.length);
-    }
-};
-
-(function ($) {
-    $.entwine(function ($) {
-
-        $('.js-found-description').entwine({
-            onmatch: function () {
-                updateFoundDescription();
-                $body.on('keyup', 'textarea.js-found-description', function () {
-                    updateFoundDescription($(this).val());
-                });
-            }
-        });
-
-        $('.js-found-title').entwine({
-            onmatch: function () {
-                updateFoundTitle();
-                $body.on('keyup', 'input.js-found-title', function () {
-                    updateFoundTitle($(this).val());
-                });
-
-            }
-        });
-
-        $('#Form_EditForm_FoundImage').entwine({
-            onChange: function (a, b, c) {
-                console.log(a);
-                console.log(b);
-                console.log(c);
+$('.js-toggle-found').on('click', function (e) {
+    e.preventDefault();
+    toggleTypeSidebar();
+});
 
 
-            }
-        });
+
+const saveFound = () => {
+    $('body').addClass('foundBusy');
+    $.ajax({
+        url: $('.js-save-type-settings').attr('data-api'),
+        type: 'POST',
+        data: {  }
+    }).done(function (response) {
+        setTimeout(() => $('body').removeClass('foundBusy'), 400);
+        $(window).trigger('resize');
     });
-})(jQuery);
+};
+
+$('.js-save-type-settings').on('click', function () {
+    saveFound();
+});
