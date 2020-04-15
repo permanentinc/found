@@ -106,7 +106,7 @@ class FoundExtension extends DataExtension
         $siteName = $siteConfig->Title != 'Your Site Name' ? $siteConfig->Title : false;
 
         return ArrayData::create([
-            'Title' => ($siteName ? $siteName . ' - ' : '') . $this->owner->FoundTitle ?: $this->owner->Title,
+            'Title' => ($siteName ? $siteName . ' - ' : '') . ($this->owner->FoundTitle ?: $this->owner->Title),
             'Description' => $this->owner->FoundDescription,
             'AbsoluteURL' => $this->owner->AbsoluteLink(),
             'Locale' => i18n::get_locale(),
