@@ -48,13 +48,15 @@ class FoundExtension extends DataExtension
 
         $URL = preg_replace('#^https?://#', '', $this->owner->AbsoluteLink());
         $URL = rtrim($URL, '/');
-        $image = $this->owner->FoundImage()->exists() ? $this->owner->FoundImage()->Fill(1200,628)->URL : '';
+        $image = $this->owner->FoundImage()->exists() ? $this->owner->FoundImage()->Fill(1200, 628)->URL : '';
 
         $fields->addFieldsToTab(
             'Root.SEO',
             [
                 LiteralField::create('FoundIntroduction', '<p class="foundIntroduction">Search engine optimization (SEO) allows you to improve your ranking in search results. Use these features to make it easier for users to find your page when they search for it.</p>'),
-                LiteralField::create('FoundExample', '<p>Search Results Preview</p>
+                LiteralField::create(
+                    'FoundExample',
+                    '<p>Search Results Preview</p>
                     <div class="foundPreview">
                     <span class="foundPreview__title [ js-found-preview-title ]" data-nominal="' . $pageTitle . ' - ' . $nominalTitle . '" data-append=" - ' . $nominalTitle . '">' . $pageTitle . ' - ' . $nominalTitle . '</span>
                     <span class="foundPreview__url [ js-found-preview-url ]">' . $this->owner->AbsoluteLink() . '</span>
@@ -93,7 +95,7 @@ class FoundExtension extends DataExtension
         try {
             $created = new \DateTime($this->owner->Created);
             $created = $created->format('c');
-        } catch (\Exception $e) {        
+        } catch (\Exception $e) {
         }
 
         try {
@@ -117,6 +119,5 @@ class FoundExtension extends DataExtension
             'LastEdited' => isset($lastEdited) ? $lastEdited : $this->owner->LastEdited,
             'SSL' => strtolower(Director::protocol()) == 'https'
         ])->renderWith('FoundTags');
-
     }
 }

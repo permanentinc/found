@@ -117,6 +117,46 @@
       text-overflow: ellipsis;
       white-space: pre; }
 
+#Form_EditForm {
+  padding-right: 1rem; }
+  #Form_EditForm::-webkit-scrollbar-track {
+    background-color: #ebebeb; }
+  #Form_EditForm::-webkit-scrollbar {
+    width: 3px;
+    background-color: #ebebeb; }
+  #Form_EditForm::-webkit-scrollbar-thumb {
+    background-color: #b3bdcc; }
+
+[data-name='SilverStripe-CMS-Model-SiteTree'] .col-Title,
+[data-name='SilverStripe-CMS-Model-SiteTree'] .col-action_SetOrderTitle {
+  width: 10% !important; }
+
+[data-name='SilverStripe-CMS-Model-SiteTree'] .col-Actions,
+[data-name='SilverStripe-CMS-Model-SiteTree'] .grid-field__col-compact .action-menu {
+  width: 0.1% !important; }
+
+[data-name='SilverStripe-CMS-Model-SiteTree'] .col-FoundTitle,
+[data-name='SilverStripe-CMS-Model-SiteTree'] .col-action_SetOrderFoundTitle {
+  width: 15% !important; }
+
+[data-name='SilverStripe-CMS-Model-SiteTree'] .col-FoundDescription,
+[data-name='SilverStripe-CMS-Model-SiteTree'] .col-action_SetOrderFoundDescription {
+  width: 20% !important; }
+
+[data-name='SilverStripe-CMS-Model-SiteTree'] .col-FoundHide, [data-name='SilverStripe-CMS-Model-SiteTree'] .col-action_SetOrderFoundHide {
+  width: 2% !important; }
+  [data-name='SilverStripe-CMS-Model-SiteTree'] .col-FoundHide input, [data-name='SilverStripe-CMS-Model-SiteTree'] .col-action_SetOrderFoundHide input {
+    width: 20px;
+    height: 20px;
+    -webkit-appearance: none;
+    border: 1px solid #e0e5eb;
+    display: block;
+    border-radius: 2px;
+    cursor: pointer;
+    margin: 0 auto; }
+    [data-name='SilverStripe-CMS-Model-SiteTree'] .col-FoundHide input:checked, [data-name='SilverStripe-CMS-Model-SiteTree'] .col-action_SetOrderFoundHide input:checked {
+      background: var(--primary-colour); }
+
 .foundOpen #found {
   -webkit-transform: translateX(0);
       -ms-transform: translateX(0);

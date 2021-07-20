@@ -1,0 +1,63 @@
+//------------------------------------------------------------------
+// Found Preview
+//------------------------------------------------------------------
+
+$primary: var(--primary-colour);
+
+#Form_EditForm {
+  padding-right: 1rem;
+
+  &::-webkit-scrollbar-track {
+    background-color: #ebebeb;
+  }
+
+  &::-webkit-scrollbar {
+    width: 3px;
+    background-color: #ebebeb;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #b3bdcc;
+  }
+}
+
+[data-name='SilverStripe-CMS-Model-SiteTree'] {
+  .col-Title,
+  .col-action_SetOrderTitle {
+    width: 10% !important;
+  }
+
+  .col-Actions,
+  .grid-field__col-compact .action-menu {
+    width: 0.1% !important;
+  }
+
+  .col-FoundTitle,
+  .col-action_SetOrderFoundTitle {
+    width: 15% !important;
+  }
+
+  .col-FoundDescription,
+  .col-action_SetOrderFoundDescription {
+    width: 20% !important;
+  }
+
+  .col-FoundHide,.col-action_SetOrderFoundHide {
+    width: 2% !important;
+
+    input {
+      width: 20px;
+      height: 20px;
+      -webkit-appearance: none;
+      border: 1px solid #e0e5eb;
+      display: block;
+      border-radius: 2px;
+      cursor: pointer;
+      margin: 0 auto;
+
+      &:checked {
+        background: $primary;
+      }
+    }
+  }
+}
