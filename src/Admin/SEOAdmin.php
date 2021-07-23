@@ -19,7 +19,7 @@ class SEOAdmin extends ModelAdmin
     private static $url_segment = 'seo-editor';
     private static $menu_title = 'SEO Editor';
     private static $menu_icon_class = 'font-icon-p-search';
-
+    public $showImportForm = false;
     private static $managed_models = [
         SiteTree::class
     ];
