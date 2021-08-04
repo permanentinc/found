@@ -51,7 +51,7 @@ class FoundAjaxExtension extends Controller
         if ($page->write()) {
             return $this->response('Values updated');
         } else {
-            return $this->error('Something went wrong', 500);
+            return $this->error('Something went wrong', 404);
         }
     }
 }
