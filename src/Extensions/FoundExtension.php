@@ -15,6 +15,7 @@ use SilverStripe\Forms\TextareaField;
 use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\SiteConfig\SiteConfig;
 use SilverStripe\AssetAdmin\Forms\UploadField;
+use SilverStripe\Control\HTTPRequest;
 
 class FoundExtension extends DataExtension
 {
@@ -33,6 +34,15 @@ class FoundExtension extends DataExtension
     private static $owns = [
         'FoundImage'
     ];
+
+    private static $allowed_actions = [
+        'updateFoundtags'
+    ];
+
+    public function updateFoundtags(HTTPRequest $request)
+    {
+        return 'ting';
+    }
 
     public function updateCMSFields(FieldList $fields)
     {

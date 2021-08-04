@@ -53,7 +53,6 @@ const updateFoundDescription = (value) => {
 
 (function ($) {
     $.entwine(function ($) {
-
         $('.js-found-description').entwine({
             onmatch: function () {
                 updateFoundDescription();
@@ -67,11 +66,39 @@ const updateFoundDescription = (value) => {
             onmatch: function () {
                 updateFoundTitle();
                 $body.on('keyup', 'input.js-found-title', function () {
-                    updateFoundTitle($(this).val()); 
+                    updateFoundTitle($(this).val());
                 });
 
             }
         });
-
     });
+
+    $.entwine('ss', function ($) {
+        $('.col-FoundTitle input,.col-FoundDescription textarea, .col-FoundHide input').entwine({
+
+            onchange: function () {
+
+                window.onbeforeunload = null;
+
+                let $this = $(this);
+                let id = $this.closest('tr').attr('data-id');
+                let fieldName = $this.attr('name').split('[').pop().replace(']', '');
+                let url = `/foundAPI/updateFoundtags/?id=${id}&fieldName=${fieldName}`
+
+                let data = {value:(fieldName === 'FoundHide') ? $this.prop('checked') : $this.val()};
+
+                $.post(
+                    url,
+                    data,
+                    function (data) {
+
+                       
+                    }, 'json'
+                );
+
+            }
+
+        });
+    });
+
 })(jQuery);

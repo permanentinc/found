@@ -13,6 +13,7 @@
     "combokeys": "^3.0.0",
     "countup.js": "^2.0.2",
     "gsap": "^2.1.2",
+    "gulp": "^4.0.2",
     "image-preload": "^1.0.6",
     "image-preloader": "^1.1.1",
     "jquery": "^3.5.0",

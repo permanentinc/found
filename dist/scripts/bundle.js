@@ -170,6 +170,21 @@ var updateFoundDescription = function updateFoundDescription(value) {
       }
     });
   });
+  $.entwine('ss', function ($) {
+    $('.col-FoundTitle input,.col-FoundDescription textarea, .col-FoundHide input').entwine({
+      onchange: function onchange() {
+        window.onbeforeunload = null;
+        var $this = $(this);
+        var id = $this.closest('tr').attr('data-id');
+        var fieldName = $this.attr('name').split('[').pop().replace(']', '');
+        var url = "/foundAPI/updateFoundtags/?id=".concat(id, "&fieldName=").concat(fieldName);
+        var data = {
+          value: fieldName === 'FoundHide' ? $this.prop('checked') : $this.val()
+        };
+        $.post(url, data, function (data) {}, 'json');
+      }
+    });
+  });
 })(jQuery);
 
 /***/ }),

@@ -1,25 +1,32 @@
 <?php
 
-namespace Toast\Admin;
+namespace permanentinc\found\extensions;
 
 use SilverStripe\Admin\ModelAdmin;
 use SilverStripe\CMS\Model\SiteTree;
-use SilverStripe\Forms\GridField\GridFieldAddNewButton;
-use SilverStripe\Forms\GridField\GridFieldDataColumns;
-use SilverStripe\Forms\GridField\GridFieldDeleteAction;
-use SilverStripe\Forms\GridField\GridFieldEditButton;
-use SilverStripe\Forms\GridField\GridFieldExportButton;
-use SilverStripe\Forms\GridField\GridFieldPrintButton;
 use SilverStripe\Versioned\GridFieldArchiveAction;
-
+use SilverStripe\Forms\GridField\GridFieldEditButton;
+use SilverStripe\Forms\GridField\GridFieldDataColumns;
+use SilverStripe\Forms\GridField\GridFieldPrintButton;
+use SilverStripe\Forms\GridField\GridFieldAddNewButton;
+use SilverStripe\Forms\GridField\GridFieldDeleteAction;
+use SilverStripe\Forms\GridField\GridFieldExportButton;
 use Symbiote\GridFieldExtensions\GridFieldEditableColumns;
 
 class SEOAdmin extends ModelAdmin
 {
     private static $url_segment = 'seo-editor';
+
     private static $menu_title = 'SEO Editor';
+
     private static $menu_icon_class = 'font-icon-p-search';
+
     public $showImportForm = false;
+
+    public $showSeachForm = false;
+
+    private static $page_length = 80;
+
     private static $managed_models = [
         SiteTree::class
     ];
@@ -51,7 +58,7 @@ class SEOAdmin extends ModelAdmin
                 [
                     'FoundTitle' => 'Meta Title',
                     'FoundDescription' => 'Meta Description',
-                    'FoundHide' => 'Hide page',
+                    'FoundHide' => 'Hide page'
                 ]
             );
         }
