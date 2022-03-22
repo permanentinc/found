@@ -11,7 +11,7 @@
     "cms"
   ],
   "type": "silverstripe-vendormodule",
-  "version": "1.2",
+  "version": "1.3",
   "license": "BSD-3-Clause",
   "authors": [
     {
