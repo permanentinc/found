@@ -15,7 +15,6 @@ use SilverStripe\Forms\TextareaField;
 use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\SiteConfig\SiteConfig;
 use SilverStripe\AssetAdmin\Forms\UploadField;
-use SilverStripe\Control\HTTPRequest;
 
 class FoundExtension extends DataExtension
 {
@@ -34,15 +33,6 @@ class FoundExtension extends DataExtension
     private static $owns = [
         'FoundImage'
     ];
-
-    private static $allowed_actions = [
-        'updateFoundtags'
-    ];
-
-    public function updateFoundtags(HTTPRequest $request)
-    {
-        return 'ting';
-    }
 
     public function updateCMSFields(FieldList $fields)
     {
@@ -86,9 +76,9 @@ class FoundExtension extends DataExtension
                         <div class="foundSocialPreview__image__background [ js-found-preview-image ]" style="background-image:url(' . $image . ')"></div>
                     </div>
                     <div class="foundSocialPreview__copy">
+                        <div class="foundSocialPreview__copy__url">' . $URL . '</div>
                         <div class="foundSocialPreview__copy__title [ js-found-preview-title ]" data-nominal="' . $pageTitle . ' - ' . $nominalTitle . '" data-append=" - ' . $nominalTitle . '">' . $pageTitle . ' - ' . $nominalTitle . '</div>
                         <div class="foundSocialPreview__copy__description [ js-found-preview-description ]" data-nominal="' . $nominalDescription . '">' . $nominalDescription . '</div>
-                        <div class="foundSocialPreview__copy__url">' . $URL . '</div>
                     </div>
                 </div>'),
                 LiteralField::create('Found_Spacer', '<p>&nbsp;</p>'),
@@ -117,7 +107,7 @@ class FoundExtension extends DataExtension
         $siteConfig = SiteConfig::current_site_config();
         $siteName = $siteConfig->Title != 'Your Site Name' ? $siteConfig->Title : false;
 
-        return ArrayData::create([
+        $output = (string)ArrayData::create([
             'Title' => ($siteName ? $siteName . ' - ' : '') . ($this->owner->FoundTitle ?: $this->owner->Title),
             'Description' => $this->owner->FoundDescription,
             'AbsoluteURL' => $this->owner->AbsoluteLink(),
@@ -129,5 +119,12 @@ class FoundExtension extends DataExtension
             'LastEdited' => isset($lastEdited) ? $lastEdited : $this->owner->LastEdited,
             'SSL' => strtolower(Director::protocol()) == 'https'
         ])->renderWith('FoundTags');
+
+        if ($this->owner->hasMethod('OverrideURL') && $this->owner->OverrideURL()) {
+            $output = str_replace($this->owner->AbsoluteLink(), $this->owner->OverrideURL(), $output);            
+        }
+
+        return DBField::create_field('HTMLText', $output);
+
     }
 }
