@@ -1,5 +1,7 @@
 <link rel="canonical" href="$AbsoluteURL"/>
 
+<title>$Title.XML</title>
+
 <meta name="description" content="$Description.XML"/>
 <meta property="og:title" content="$Title.XML"/>
 <meta property="og:description" content="$Description.XML"/>
