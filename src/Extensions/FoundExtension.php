@@ -92,16 +92,18 @@ class FoundExtension extends DataExtension
     public function FoundTags()
     {
 
-        try {
+        if ($this->owner->Created) {
             $created = new \DateTime($this->owner->Created);
-            $created = $created->format('c');
-        } catch (\Exception $e) {
+            $created = $created->format('c');	
+        } else {
+            $created = '';
         }
-
-        try {
+        
+        if ($this->owner->LastEdited) {
             $lastEdited = new \DateTime($this->owner->LastEdited);
             $lastEdited = $lastEdited->format('c');
-        } catch (\Exception $e) {
+        } else {
+            $lastEdited = '';
         }
 
         $siteConfig = SiteConfig::current_site_config();
