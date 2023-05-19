@@ -2,7 +2,7 @@
     <% require css("vendor/permanentinc/found/dist/styles/main.css") %>
     <% require javascript("vendor/permanentinc/found/dist/scripts/bundle.js") %>
 
-<div id="found" class="js-found" data-api="{$BaseHref}type_api/load">
+<div id="found" class="js-found" data-api="{$BaseHref}/type_api/load">
   
     <a href="#" class="js-toggle-found">
         <svg width="54px" height="53px" viewBox="0 0 54 53" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
