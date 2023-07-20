@@ -1495,6 +1495,39 @@ var updateFoundDescription = function(value) {
                 });
             }
         });
+        $(".js-found-toggle-container").entwine({
+            onclick: function onclick() {
+                $(this).parent().toggleClass("open");
+            }
+        });
+        $(".js-generate-found-meta-description").entwine({
+            onclick: function onclick() {
+                var $container = $(this).closest(".foundGPT__container");
+                var url = "/foundAPI/assistedContent/";
+                var prompt = $container.find(".js-found-prompt").val();
+                var tone = $container.find(".js-found-tone").val();
+                $container.addClass("busy");
+                if (!prompt) alert("Please enter a prompt");
+                else {
+                    console.log(prompt, tone);
+                    fetch("".concat(url, "?prompt=").concat(prompt, "&tone=").concat(tone)).then(function(response) {
+                        return response.json();
+                    }).then(function(data) {
+                        $container.removeClass("busy");
+                        console.log(data);
+                        $container.find(".js-found-meta-description").val(data.data.suggestion);
+                    });
+                }
+            }
+        });
+        $(".js-use-found-meta-description").entwine({
+            onclick: function onclick() {
+                var $container = $(this).closest(".foundGPT__container");
+                $container.parent().removeClass("open");
+                var suggestion = $container.find(".js-found-meta-description").val();
+                $(".js-found-description").val(suggestion);
+            }
+        });
         $(".js-found-title").entwine({
             onmatch: function onmatch() {
                 updateFoundTitle();

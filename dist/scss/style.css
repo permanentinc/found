@@ -497,4 +497,108 @@
   color: #c792ea !important;
 }
 
+.foundGPT {
+  z-index: 4444;
+  position: relative;
+}
+
+.foundGPT.open .foundGPT__container {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+}
+
+.foundGPT__button {
+  background: var(--primary-colour);
+  border: 0;
+  border-radius: .2rem;
+  width: 24px;
+  height: 24px;
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.foundGPT__button svg {
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.foundGPT__button svg path {
+  fill: #fff;
+}
+
+.foundGPT__container {
+  opacity: 0;
+  visibility: hidden;
+  background: #fff;
+  border: 1px solid #b3bdcc;
+  border-radius: .3rem;
+  flex-wrap: wrap;
+  width: 40rem;
+  padding: 1rem;
+  transition: all .333s;
+  display: flex;
+  position: absolute;
+  top: 100%;
+  right: 3rem;
+  -webkit-transform: translateY(.2rem)translateX(-.2rem);
+  transform: translateY(.2rem)translateX(-.2rem);
+  box-shadow: 0 2px rgba(90, 97, 105, .11), 0 4px 8px rgba(90, 97, 105, .12), 0 10px 10px rgba(90, 97, 105, .06), 0 7px 70px rgba(90, 97, 105, .1);
+}
+
+.foundGPT__container.busy .foundGPT__container__right__loader {
+  opacity: 1;
+  visibility: visible;
+}
+
+.foundGPT__container .btn svg {
+  margin-left: .4rem;
+}
+
+.foundGPT__container__left {
+  width: 50%;
+  padding-right: .5rem;
+}
+
+.foundGPT__container__left textarea {
+  height: 8rem;
+  margin-bottom: 1rem;
+}
+
+.foundGPT__container__left select {
+  margin-bottom: 1rem;
+}
+
+.foundGPT__container__right {
+  width: 50%;
+  padding-top: 2.5rem;
+  padding-left: .5rem;
+  position: relative;
+}
+
+.foundGPT__container__right__loader {
+  opacity: 0;
+  visibility: hidden;
+  transition: all .222s;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.foundGPT__container__right textarea {
+  height: 13.8rem;
+  margin-bottom: 1rem;
+}
+
 /*# sourceMappingURL=style.css.map */
