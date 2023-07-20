@@ -15,10 +15,6 @@ SilverStripe\SiteConfig\SiteConfig:
   extensions:
     - permanentinc\found\Extensions\FoundConfigExtension
 
-permanentinc\found\extensions:
-  extensions:
-    - permanentinc\found\Extensions\FoundAjaxExtension
-
 SilverStripe\Control\Director:
   rules:
-    "foundAPI//$Method": permanentinc\found\Extensions\FoundAjaxExtension
+    "foundAPI//$Method": permanentinc\found\controllers\FoundController
