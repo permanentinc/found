@@ -31,6 +31,7 @@ class FoundConfigExtension extends DataExtension
                 ->setDescription('If set, this will be used on pages that do not have am individual Social Sharing Image set under SEO.'),
             TextField::create('FoundOpenAIAccessToken', 'OpenAI Access Token')
                 ->setDescription('If set, this will enable the assisted content functionality.')
+                ->setAttribute('type', 'password')
         ]);
     }
 
