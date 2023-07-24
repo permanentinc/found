@@ -1,5 +1,5 @@
 # Changelog
 
-## [0.1.0]
+## [1.0.0]
 
-Initial Commit of 'Beautiful' CMS theme
+2023 Update

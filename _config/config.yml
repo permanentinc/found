@@ -3,9 +3,9 @@ Name: permanentinc-found
 ---
 SilverStripe\Admin\LeftAndMain:
   extra_requirements_css:
-    - permanentinc/found:dist\styles\main.css
+    - permanentinc/found:dist\scss\style.css
   extra_requirements_javascript:
-    - permanentinc/found:dist\scripts\bundle.js
+    - permanentinc/found:dist\js\app.js
 
 SilverStripe\CMS\Model\SiteTree:
   extensions:
@@ -15,10 +15,6 @@ SilverStripe\SiteConfig\SiteConfig:
   extensions:
     - permanentinc\found\Extensions\FoundConfigExtension
 
-permanentinc\found\extensions:
-  extensions:
-    - permanentinc\found\Extensions\FoundAjaxExtension
-
 SilverStripe\Control\Director:
   rules:
-    "foundAPI//$Method": permanentinc\found\Extensions\FoundAjaxExtension
+    "foundAPI//$Method": permanentinc\found\controllers\FoundController

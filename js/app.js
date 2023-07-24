@@ -19,7 +19,7 @@ Variables
 let $body = $('body');
 
 /*------------------------------------------------------------------
-Post load classlist
+Post load.classList
 ------------------------------------------------------------------*/
 
 
@@ -62,6 +62,51 @@ const updateFoundDescription = (value) => {
             }
         });
 
+        $('.js-found-toggle-container').entwine({
+            onclick: function () {
+                $(this).parent().toggleClass('open');
+            }
+        });
+
+        $('.js-generate-found-meta-description').entwine({
+            onclick: function () {
+                let $container = $(this).closest('.foundGPT__container');
+                let url = `/foundAPI/assistedContent/`
+                let prompt = $container.find('.js-found-prompt').val();
+                let tone = $container.find('.js-found-tone').val();
+                let instructions = $container.find('.js-found-instructions').val();
+
+                $container.addClass('busy');
+
+
+                if (!prompt) {
+                    alert(`Please enter a prompt`);
+                    $container.removeClass('busy');
+                } else {
+                    fetch(`${url}?prompt=${prompt}&tone=${tone}${(instructions) ? `&instructions=${instructions}` : ``}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            $container.removeClass('busy');
+                            $container.find('.js-found-meta-description').val(data.data.suggestion);
+                        })
+                }
+
+
+
+            }
+        });
+
+        $('.js-use-found-meta-description').entwine({
+            onclick: function () {
+                let $container = $(this).closest('.foundGPT__container');
+
+                $container.parent().removeClass('open');
+                let suggestion = $container.find('.js-found-meta-description').val();
+                $('.js-found-description').val(suggestion);
+
+            }
+        });
+
         $('.js-found-title').entwine({
             onmatch: function () {
                 updateFoundTitle();
@@ -85,14 +130,14 @@ const updateFoundDescription = (value) => {
                 let fieldName = $this.attr('name').split('[').pop().replace(']', '');
                 let url = `/foundAPI/updateFoundtags/?id=${id}&fieldName=${fieldName}`
 
-                let data = {value:(fieldName === 'FoundHide') ? $this.prop('checked') : $this.val()};
+                let data = { value: (fieldName === 'FoundHide') ? $this.prop('checked') : $this.val() };
 
                 $.post(
                     url,
                     data,
                     function (data) {
 
-                       
+
                     }, 'json'
                 );
 

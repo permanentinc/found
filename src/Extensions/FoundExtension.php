@@ -64,6 +64,36 @@ class FoundExtension extends DataExtension
                     </div>'
                 ),
                 TextField::create('FoundTitle', 'SEO Title (Optional)')->addExtraClass('[ js-found-title ]'),
+
+                LiteralField::create('FoundGPT', '<div class="foundGPT">
+                    <button class="[ js-found-toggle-container ] foundGPT__button"><svg xmlns="http://www.w3.org/2000/svg" width="30.428" height="32" viewBox="0 0 30.428 32"><path fill="#000" fill-rule="evenodd" d="M28.12 3.88a4.479 4.479 0 0 1 1.32 3.188c0 1.21-.472 2.34-1.32 3.189l-2.326 2.327-.014.015-.015.012-18.067 18.07A4.487 4.487 0 0 1 4.508 32c-1.162 0-2.31-.44-3.188-1.32A4.479 4.479 0 0 1 0 27.492a4.48 4.48 0 0 1 1.32-3.19L19.386 6.235l.015-.015.015-.015 2.327-2.325a4.511 4.511 0 0 1 6.377 0Zm-7.888 4.837L2.985 25.967c-.41.408-.629.943-.629 1.525 0 .58.22 1.115.63 1.523a2.17 2.17 0 0 0 3.047 0L23.28 11.766l-3.049-3.049Zm9.962 8.798c.204.205.282.504.204.77l-.629 2.137.63 2.136a.767.767 0 0 1-.205.77.733.733 0 0 1-.55.236c-.078 0-.141-.016-.22-.031l-2.136-.63-2.137.63a.773.773 0 0 1-.77-.205c-.204-.205-.282-.502-.204-.77l.63-2.136-.63-2.137a.767.767 0 0 1 .205-.77c.203-.189.502-.283.769-.203l2.137.627 2.137-.627c.266-.08.565 0 .769.203Zm-1.712 1.713-.975.283a.699.699 0 0 1-.439 0l-.975-.283.283.973a.704.704 0 0 1 0 .44l-.283.974.975-.283c.078-.014.142-.03.22-.03.078 0 .141.016.22.03l.974.283-.283-.973a.704.704 0 0 1 0-.44l.283-.974ZM6.63 9.66c.205.205.283.503.205.77l-.63 2.136.63 2.137a.767.767 0 0 1-.205.77.739.739 0 0 1-.55.236c-.077 0-.14-.016-.219-.032l-2.137-.628-2.137.628a.773.773 0 0 1-.769-.203.786.786 0 0 1-.204-.77l.629-2.138-.63-2.135a.767.767 0 0 1 .205-.77c.204-.19.503-.283.77-.205l2.136.629 2.137-.63a.783.783 0 0 1 .769.205Zm-1.711 1.713-.975.283a.699.699 0 0 1-.44 0l-.974-.283.283.974a.704.704 0 0 1 0 .44l-.283.974.975-.283c.078-.016.141-.03.22-.03.077 0 .14.014.219.03l.975.283-.283-.974a.704.704 0 0 1 0-.44l.283-.974ZM24.93 4.917c-.55 0-1.1.203-1.524.627l-1.509 1.507 3.049 3.049 1.509-1.507c.408-.41.627-.943.627-1.525a2.14 2.14 0 0 0-2.152-2.152ZM12.913.234a.785.785 0 0 1 .205.77L12.49 3.14l.63 2.137a.767.767 0 0 1-.206.77.741.741 0 0 1-.549.236c-.08 0-.141-.016-.22-.032l-2.136-.628-2.137.628a.767.767 0 0 1-.77-.203.776.776 0 0 1-.204-.77l.627-2.138-.627-2.135A.767.767 0 0 1 7.1.235.786.786 0 0 1 7.87.03l2.138.629 2.135-.63a.777.777 0 0 1 .77.205Zm-1.712 1.713-.974.283a.703.703 0 0 1-.44 0l-.974-.283.283.974a.704.704 0 0 1 0 .44l-.283.974.974-.283c.08-.016.141-.03.22-.03.079 0 .142.014.22.03l.974.283-.283-.974a.704.704 0 0 1 0-.44l.283-.974Z"/></svg></button>
+                        <div class="foundGPT__container">
+                            <div class="foundGPT__container__left">
+                                <h3>Generate a metadescription</h3>
+                                <label>Enter a prompt</label>
+                                <textarea class="[ js-found-prompt ] foundGPT__container__left__prompt" placeholder="e.g. Page about our staff, dedication to a great job, locally owned business"></textarea>
+                                <label>Special Instructions (optional)</label>
+                                <input type="text" class="[ js-found-instructions ] foundGPT__container__left__instructions text" placeholder="e.g. Replace some words with emojis">
+                                <label>Tone of voice</label>
+                                <select class="[ js-found-tone ]">
+                                <option value="friendly" selected>Friendly</option>
+                                <option value="professional">Professional</option>
+                                <option value="funny">Funny</option>
+                                <option value="salesy">Salesy</option>
+                                <option value="informative">Informative</option>
+                                </select>
+
+                                <button class="[ js-generate-found-meta-description ] btn btn-primary">Generate text <svg xmlns="http://www.w3.org/2000/svg" width="13" height="12" viewBox="0 0 13 12"><path fill="#FFF" fill-rule="evenodd" d="M4.562 6.021c.068 0 .123.043.137.113.274 1.385 1.315 2.46 2.644 2.742.068.015.11.07.11.141 0 .071-.042.127-.11.142-1.33.283-2.37 1.357-2.644 2.728a.135.135 0 0 1-.137.113.135.135 0 0 1-.137-.113C4.15 10.516 3.109 9.442 1.78 9.159c-.069-.015-.11-.07-.11-.142 0-.07.041-.126.11-.14 1.328-.284 2.37-1.357 2.644-2.743a.135.135 0 0 1 .137-.113Zm4.835-4.678c.096 0 .165.056.178.141.343 1.71 1.63 3.053 3.288 3.407.082.014.137.085.137.183 0 .1-.055.17-.137.184-1.644.354-2.945 1.682-3.288 3.392-.027.085-.095.142-.178.142-.096 0-.164-.057-.178-.142-.342-1.696-1.63-3.038-3.287-3.392a.194.194 0 0 1-.137-.184c0-.098.054-.17.137-.183 1.643-.354 2.945-1.697 3.287-3.407.027-.085.096-.141.178-.141ZM2.795 0c.082 0 .164.056.178.141a3.41 3.41 0 0 0 2.48 2.573c.082.014.137.098.137.183a.194.194 0 0 1-.137.184c-1.206.297-2.192 1.301-2.48 2.559-.014.085-.096.141-.178.141-.083 0-.151-.056-.178-.141C2.315 4.382 1.343 3.378.137 3.08.055 3.067 0 2.982 0 2.897c0-.085.055-.155.137-.183 1.233-.311 2.178-1.3 2.48-2.573C2.63.056 2.712 0 2.795 0Z"/></svg></button>
+                            </div>
+                            <div class="foundGPT__container__right">
+                                <label>Suggestion</label>
+                                <svg class="foundGPT__container__right__loader" xmlns="http://www.w3.org/2000/svg" width="38" height="38" stroke="#377BFF" viewBox="0 0 38 38"><g fill="none" fill-rule="evenodd" stroke-width="2" transform="translate(1 1)"><circle cx="18" cy="18" r="18" stroke-opacity=".5"/><path d="M36 18c0-9.94-8.06-18-18-18"><animateTransform attributeName="transform" dur="1s" from="0 18 18" repeatCount="indefinite" to="360 18 18" type="rotate"/></path></g></svg>
+                                <textarea class="[ js-found-meta-description ] foundGPT__container__right__suggestion"></textarea>
+                                <button class="[ js-use-found-meta-description ] btn btn-primary">Keep text <svg xmlns="http://www.w3.org/2000/svg" width="11" height="8" viewBox="0 0 11 8"><path fill="#FFF" fill-rule="evenodd" d="M3.864 5.312 9.573 0 11 1.36 3.864 8 0 4.405l1.462-1.361z"/></svg></button>
+                            </div>
+                        </div>
+                    </div>'),
+
                 TextareaField::create('FoundDescription', 'SEO Description (Optional)')->addExtraClass('[ js-found-description ]'),
                 LiteralField::create('FoundIntroduction', '<p>Search results typically show your SEO title and description. Your title is also the browser window title, and matches your title formats. Depending on the search engine, descriptions displayed can be 50 to 300 characters long. If you don’t add a title or description, search engines will use your page title and content.</p>'),
                 LiteralField::create('FoundImage_Description', '<p class="foundIntroduction">Social networks typically show your social sharing image together with your SEO title and description. If you don’t add a social sharing image, we’ll use your social sharing logo or site logo instead. <a href="https://developers.facebook.com/tools/debug/sharing/?q=' . $this->owner->AbsoluteLink() . '" target="_blank">Facebook (fetch latest preview)</a></p>'),
@@ -94,11 +124,11 @@ class FoundExtension extends DataExtension
 
         if ($this->owner->Created) {
             $created = new \DateTime($this->owner->Created);
-            $created = $created->format('c');	
+            $created = $created->format('c');
         } else {
             $created = '';
         }
-        
+
         if ($this->owner->LastEdited) {
             $lastEdited = new \DateTime($this->owner->LastEdited);
             $lastEdited = $lastEdited->format('c');
@@ -123,10 +153,9 @@ class FoundExtension extends DataExtension
         ])->renderWith('FoundTags');
 
         if ($this->owner->hasMethod('OverrideURL') && $this->owner->OverrideURL()) {
-            $output = str_replace($this->owner->AbsoluteLink(), $this->owner->OverrideURL(), $output);            
+            $output = str_replace($this->owner->AbsoluteLink(), $this->owner->OverrideURL(), $output);
         }
 
         return DBField::create_field('HTMLText', $output);
-
     }
 }

@@ -42,7 +42,8 @@ $primary: var(--primary-colour);
     width: 20% !important;
   }
 
-  .col-FoundHide,.col-action_SetOrderFoundHide {
+  .col-FoundHide,
+  .col-action_SetOrderFoundHide {
     width: 2% !important;
 
     input {
