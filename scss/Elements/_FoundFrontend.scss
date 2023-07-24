@@ -306,7 +306,7 @@ $dot-size2: 6px;
     position: absolute;
     top: 100%;
     right: 3rem;
-    width: 40rem;
+    width: 42rem;
     border: 1px solid #b3bdcc;
     padding: 1rem;
     border-radius: 0.3rem;
@@ -330,6 +330,10 @@ $dot-size2: 6px;
       }
     }
 
+    label {
+      margin-bottom: 0.2rem;
+    }
+
     .btn {
       svg {
         margin-left: 0.4rem;
@@ -342,11 +346,16 @@ $dot-size2: 6px;
 
       textarea {
         height: 8rem;
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      input[type='text'] {
+        width: 100%;
+        margin-bottom: 0.5rem;
       }
 
       select {
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
       }
     }
 
@@ -367,8 +376,8 @@ $dot-size2: 6px;
       }
 
       textarea {
-        height: 13.8rem;
-        margin-bottom: 1rem;
+        height: 18rem;
+        margin-bottom: 0.5rem;
       }
     }
   }

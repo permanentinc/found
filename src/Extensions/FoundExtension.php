@@ -72,6 +72,8 @@ class FoundExtension extends DataExtension
                                 <h3>Generate a metadescription</h3>
                                 <label>Enter a prompt</label>
                                 <textarea class="[ js-found-prompt ] foundGPT__container__left__prompt" placeholder="e.g. Page about our staff, dedication to a great job, locally owned business"></textarea>
+                                <label>Special Instructions (optional)</label>
+                                <input type="text" class="[ js-found-instructions ] foundGPT__container__left__instructions text" placeholder="e.g. Replace some words with emojis">
                                 <label>Tone of voice</label>
                                 <select class="[ js-found-tone ]">
                                 <option value="friendly" selected>Friendly</option>

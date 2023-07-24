@@ -142,13 +142,13 @@
       this[globalName] = mainExports;
     }
   }
-})({"1I56J":[function(require,module,exports) {
+})({"3q4UE":[function(require,module,exports) {
 var _asyncToGenerator = require("@swc/helpers/_/_async_to_generator");
 var _toConsumableArray = require("@swc/helpers/_/_to_consumable_array");
 var _tsGenerator = require("@swc/helpers/_/_ts_generator");
 var global = arguments[3];
 var HMR_HOST = null;
-var HMR_PORT = 1234;
+var HMR_PORT = 60477;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "dfd5faebf5bd83b5";
 module.bundle.HMR_BUNDLE_ID = "f4dd7287f13a6467";
@@ -1506,18 +1506,17 @@ var updateFoundDescription = function(value) {
                 var url = "/foundAPI/assistedContent/";
                 var prompt = $container.find(".js-found-prompt").val();
                 var tone = $container.find(".js-found-tone").val();
+                var instructions = $container.find(".js-found-instructions").val();
                 $container.addClass("busy");
-                if (!prompt) alert("Please enter a prompt");
-                else {
-                    console.log(prompt, tone);
-                    fetch("".concat(url, "?prompt=").concat(prompt, "&tone=").concat(tone)).then(function(response) {
-                        return response.json();
-                    }).then(function(data) {
-                        $container.removeClass("busy");
-                        console.log(data);
-                        $container.find(".js-found-meta-description").val(data.data.suggestion);
-                    });
-                }
+                if (!prompt) {
+                    alert("Please enter a prompt");
+                    $container.removeClass("busy");
+                } else fetch("".concat(url, "?prompt=").concat(prompt, "&tone=").concat(tone).concat(instructions ? "&instructions=".concat(instructions) : "")).then(function(response) {
+                    return response.json();
+                }).then(function(data) {
+                    $container.removeClass("busy");
+                    $container.find(".js-found-meta-description").val(data.data.suggestion);
+                });
             }
         });
         $(".js-use-found-meta-description").entwine({
@@ -8290,6 +8289,6 @@ exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
 exports.getOrigin = getOrigin;
 
-},{}]},["1I56J","676Kc"], "676Kc", "parcelRequire0eb1")
+},{}]},["3q4UE","676Kc"], "676Kc", "parcelRequire0eb1")
 
 //# sourceMappingURL=app.js.map

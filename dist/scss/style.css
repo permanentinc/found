@@ -543,7 +543,7 @@
   border: 1px solid #b3bdcc;
   border-radius: .3rem;
   flex-wrap: wrap;
-  width: 40rem;
+  width: 42rem;
   padding: 1rem;
   transition: all .333s;
   display: flex;
@@ -560,6 +560,10 @@
   visibility: visible;
 }
 
+.foundGPT__container label {
+  margin-bottom: .2rem;
+}
+
 .foundGPT__container .btn svg {
   margin-left: .4rem;
 }
@@ -571,11 +575,16 @@
 
 .foundGPT__container__left textarea {
   height: 8rem;
-  margin-bottom: 1rem;
+  margin-bottom: .5rem;
+}
+
+.foundGPT__container__left input[type="text"] {
+  width: 100%;
+  margin-bottom: .5rem;
 }
 
 .foundGPT__container__left select {
-  margin-bottom: 1rem;
+  margin-bottom: .5rem;
 }
 
 .foundGPT__container__right {
@@ -597,8 +606,8 @@
 }
 
 .foundGPT__container__right textarea {
-  height: 13.8rem;
-  margin-bottom: 1rem;
+  height: 18rem;
+  margin-bottom: .5rem;
 }
 
 /*# sourceMappingURL=style.css.map */

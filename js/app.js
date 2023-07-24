@@ -74,17 +74,19 @@ const updateFoundDescription = (value) => {
                 let url = `/foundAPI/assistedContent/`
                 let prompt = $container.find('.js-found-prompt').val();
                 let tone = $container.find('.js-found-tone').val();
+                let instructions = $container.find('.js-found-instructions').val();
 
                 $container.addClass('busy');
 
 
-                if (!prompt) { alert(`Please enter a prompt`) } else {
-                    console.log(prompt, tone);
-                    fetch(`${url}?prompt=${prompt}&tone=${tone}`)
+                if (!prompt) {
+                    alert(`Please enter a prompt`);
+                    $container.removeClass('busy');
+                } else {
+                    fetch(`${url}?prompt=${prompt}&tone=${tone}${(instructions) ? `&instructions=${instructions}` : ``}`)
                         .then(response => response.json())
                         .then(data => {
                             $container.removeClass('busy');
-                            console.log(data);
                             $container.find('.js-found-meta-description').val(data.data.suggestion);
                         })
                 }
