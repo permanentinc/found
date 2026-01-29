@@ -3,14 +3,14 @@
 namespace permanentinc\found\extensions;
 
 use SilverStripe\Assets\Image;
+use SilverStripe\Core\Extension;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TextField;
-use SilverStripe\ORM\DataExtension;
 use SilverStripe\Forms\PasswordField;
 use SilverStripe\Versioned\Versioned;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 
-class FoundConfigExtension extends DataExtension
+class FoundConfigExtension extends Extension
 {
 
     private static $db = [

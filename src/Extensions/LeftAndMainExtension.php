@@ -6,7 +6,7 @@ use SilverStripe\Core\Extension;
 
 class LeftAndMainExtension extends Extension
 {
-    public function init()
+    public function onInit()
     {
 
         

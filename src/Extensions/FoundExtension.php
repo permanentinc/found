@@ -4,7 +4,8 @@ namespace permanentinc\found\extensions;
 
 use SilverStripe\i18n\i18n;
 use SilverStripe\Assets\Image;
-use SilverStripe\View\ArrayData;
+use SilverStripe\Core\Extension;
+use SilverStripe\Model\ArrayData;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TextField;
 use SilverStripe\Control\Director;
@@ -16,7 +17,7 @@ use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\SiteConfig\SiteConfig;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 
-class FoundExtension extends DataExtension
+class FoundExtension extends Extension
 {
 
     private static $db = [
