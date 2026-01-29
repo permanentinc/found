@@ -23,7 +23,7 @@ class FoundExtension extends Extension
     private static $db = [
         'FoundTitle'       => 'Varchar(255)',
         'FoundDescription' => 'Text',
-        'FoundTwitterUser' => 'Varchar(255)',
+        // 'FoundTwitterUser' => 'Varchar(255)',
         'FoundHide'        => 'Boolean'
     ];
 
