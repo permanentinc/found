@@ -23,7 +23,7 @@ class FoundExtension extends Extension
     private static $db = [
         'FoundTitle'       => 'Varchar(255)',
         'FoundDescription' => 'Text',
-        // 'FoundTwitterUser' => 'Varchar(255)',
+        'FoundTwitterUser' => 'Varchar(255)',
         'FoundHide'        => 'Boolean'
     ];
 
@@ -38,7 +38,7 @@ class FoundExtension extends Extension
     public function updateCMSFields(FieldList $fields)
     {
 
-        $fields->removeByName('Metadata');
+        $fields->removeByName(['Metadata','FoundTwitterUser']);
 
         $fields->findOrMakeTab('Root.SEO', 'SEO');
 
